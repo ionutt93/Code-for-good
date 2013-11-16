@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Codeforgood</title>
+  
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
@@ -11,11 +11,6 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
-
-    <title>Narrow Jumbotron Template for Bootstrap</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="./app/assets/stylesheets/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
 
@@ -55,55 +50,36 @@
 
 </head>
 <body>
-							<% if company_signed_in? %>
-								<%= current_company.email %>
-								<% if current_company.admin? %>
-									<!-- do smth -->
-								<% end %>
-								<%# link_to "My Account", companies_path(current_company.id) %></li>
-								<%= link_to "Sign out", destroy_company_session_path, :method => :delete %></li>
-								
-							<% else %>
-								<ul>
-									<li><%= link_to "Login", new_company_session_path %></li> or 
-									<li><%= link_to "Sign up", new_company_registration_path %></li>
-								</ul>
-							<% end %>
+							
 
-<<<<<<< HEAD
+	<div class="header text-center">
 
-<%= yield %>
-=======
-	<div class="header">
         <ul class="nav nav-pills pull-right">
-          <a class="btn btn-lg btn-success" href="#" role="button">Home</a>
-          <a class="btn btn-lg btn-success" href="#" role="button">Login</a>
+        <% if company_signed_in? %>
+                <%= current_company.email %>
+                <%# link_to "My Account", companies_path(current_company.id) %>
+                <%= link_to "Sign out", destroy_company_session_path, :method => :delete, class: "btn btn-lg btn-error" %>
+                
+              <% else %>
+                  <%= link_to "Login", new_company_session_path, class: "btn btn-lg btn-success" %> 
+                  <%= link_to "Sign up", new_company_registration_path, class: "btn btn-lg btn-success", role: "button" %>
+        <% end %>
         </ul>
         <img class="image" src="http://socialentrepreneurs.ie/wp-content/themes/sei/images/logo.png">
 
       <hr id="smallhr">
       </div>  
-	<div class="container-fluid">
-	  <div class="row-fluid">
-	    <div class="span2">
-	      <div class="well sidebar-nav">
-	        <ul class="nav nav-list" class="nav " id="myTab">
-	          <% (1..18).each do |i| %>
-	  		 	<li id=`<%#{i}%>`><a href="#" class="btn">Company Name</a></li>
-	  		  <% end %>
-	        </ul>
-	      </div><!--/.well -->
-	    </div><!--/span-->
- 
-	   <%= yield %>
 
-	  </div>
-	</div><!--end container-fluid-->
-
+      <%= yield %>
+	
 	<div class="footer">
         <p>&copy; Social Entrepreneurs 2013</p>
     </div>
->>>>>>> 1bfcba2c02c99ec454e864efbd7950e5b069a4e3
+
 
 </body>
 </html>
+
+
+          <!--a  href="#" role="button">Home</a>
+          <a class="btn btn-lg btn-success" href="#" role="button">Login</a>
