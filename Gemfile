@@ -8,7 +8,11 @@ group :development do
 	gem 'sqlite3'
 end
 
-gem 'rails_12factor', group: :production
+group :production do
+	gem 'rails_12factor'
+	gem 'pg'
+end
+
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
