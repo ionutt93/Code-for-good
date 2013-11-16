@@ -3,8 +3,8 @@
 	    <div class="span2">
 	      <div class="well sidebar-nav">
 	        <ul class="nav nav-list" class="nav " id="myTab">
-	          <% (1..18).each do |i| %>
-	  		 	<li id=`<%#{i}%>`><a href="#">Company Name</a></li>
+	          <% @companies.each do |company| %>
+	  		 	<li id="#{i}"><%= link_to company.name, company_path(company.id), class: "btn" %> </li>
 	  		  <% end %>
 	        </ul>
 	      </div><!--/.well -->
