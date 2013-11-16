@@ -36,6 +36,7 @@
     	padding-right: 10%;
     }
     .image {
+    	text-align: left;
     	max-width: 280px;
     }
     .footer{
@@ -52,8 +53,7 @@
 <body>
 							
 
-	<div class="header text-center">
-
+	<div class="header text-left">
         <ul class="nav nav-pills pull-right">
         <% if company_signed_in? %>
                 <%= current_company.email %>
@@ -64,6 +64,7 @@
                   <%= link_to "Login", new_company_session_path, class: "btn btn-lg btn-success" %> 
                   <%= link_to "Sign up", new_company_registration_path, class: "btn btn-lg btn-success", role: "button" %>
         <% end %>
+        <%= link_to "Home", root_path,  class: "btn btn-lg btn-success", role: "button" %>
         </ul>
         <img class="image" src="http://socialentrepreneurs.ie/wp-content/themes/sei/images/logo.png">
 
