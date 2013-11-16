@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20131116210603) do
+=======
+ActiveRecord::Schema.define(version: 20131116202251) do
+>>>>>>> 1bfcba2c02c99ec454e864efbd7950e5b069a4e3
 
   create_table "companies", force: true do |t|
     t.string   "email",                  default: "",    null: false
@@ -26,11 +30,28 @@ ActiveRecord::Schema.define(version: 20131116210603) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+<<<<<<< HEAD
     t.boolean  "admin",                  default: false
     t.string   "name"
+=======
+    t.boolean  "admin"
+>>>>>>> 1bfcba2c02c99ec454e864efbd7950e5b069a4e3
   end
 
   add_index "companies", ["email"], name: "index_companies_on_email", unique: true
   add_index "companies", ["reset_password_token"], name: "index_companies_on_reset_password_token", unique: true
+
+  create_table "updates", force: true do |t|
+    t.integer  "company_id"
+    t.text     "update_SEI"
+    t.text     "challenge"
+    t.text     "support_req"
+    t.integer  "impact"
+    t.integer  "employed"
+    t.integer  "volunteers"
+    t.integer  "raised_funds"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
