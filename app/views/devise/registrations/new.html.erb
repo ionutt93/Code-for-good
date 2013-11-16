@@ -1,21 +1,65 @@
-<h2>Sign up</h2>
+<style type="text/css">
+  .form-signin {
+        max-width: 300px;
+        padding: 19px 29px 29px;
+        margin: 0 auto 20px;
+        background-color: #fff;
+        border: 1px solid #e5e5e5;
+        -webkit-border-radius: 5px;
+           -moz-border-radius: 5px;
+                border-radius: 5px;
+        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+           -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+                box-shadow: 0 1px 2px rgba(0,0,0,.05);
+        box-shadow: 7px 7px 4px #D8D8D8;
+      }
+      .form-signin .form-signin-heading,
+      .form-signin .checkbox {
+        margin-bottom: 10px;
+      }
+      .form-signin input[type="text"],
+      .form-signin input[type="password"] {
+        font-size: 16px;
+        height: 35px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        padding: 7px 9px;
+      }
+      .other {
+        padding-top: 5%;
+      }
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+      .text-center {
+        padding-bottom: 10%;
+      }
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
+      .sgnBtn {
+        margin-left: 35%;
+        margin-top: 35px;
+      }
 
-  <div><%= f.label :company_name %><br />
-  <%= f.text_field :name %></div>
+</style>
+<div class="container">
+  
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
+  <%= form_for(resource, :as => resource_name, :html => {:class => "form-signin"}, :url => registration_path(resource_name)) do |f| %>
+    <%= devise_error_messages! %>
+    <h2 class="text-center">Sign up</h2>
+    <div><%#= f.label :email %><br />
+    <%= f.email_field :email, type: "text", :autofocus => true, class: "input-block-level", placeholder: "E-mail" %></div>
 
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
+    <div><%#= f.label :company_name %><br />
+    <%= f.text_field :name, type: "text", class: "input-block-level", placeholder: "Company name" %></div>
 
-  <div><%= f.submit "Sign up" %></div>
-<% end %>
+    <div><%#= f.label :password %><br />
+    <%= f.password_field :password, class: "input-block-level", placeholder: "Password" %></div>
 
-<%= render "devise/shared/links" %>
+    <div><%#= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, class: "input-block-level", placeholder: "Retype your password" %></div>
+
+    <div><%= f.submit "Sign up", class: "btn btn-large btn-success sgnBtn" %></div>
+
+    <%#= render "devise/shared/links" %>
+  <% end %>
+</div>
+
