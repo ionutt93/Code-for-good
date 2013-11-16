@@ -19,7 +19,7 @@ class UpdatesController < ApplicationController
 
 		if @update.update(params[:update].permit(:update_SEI, :challenge, :support_req,
 													:impact, :employed, :volunteers, :raised_funds))
-			redirect_to updates_path
+			redirect_to update_path(@update)
 		else
 			render "edit"
 		end
