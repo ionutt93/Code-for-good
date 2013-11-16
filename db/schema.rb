@@ -26,7 +26,11 @@ ActiveRecord::Schema.define(version: 20131116210603) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+<<<<<<< HEAD
     t.boolean  "admin"
+=======
+    t.boolean  "admin",                  default: false
+>>>>>>> b22e3acdbe69fa2484ac9b15e5f6ed8f75040219
     t.string   "name"
   end
 

@@ -1,16 +1,30 @@
 <div class="container-fluid">
-	  <div class="row-fluid">
-	    <div class="span2">
-	      <div class="well sidebar-nav">
-	        <ul class="nav nav-list" class="nav " id="myTab">
-	          <% @companies.each do |company| %>
-	  		 	<li id="#{i}"><%= link_to company.name, company_path(company.id), class: "btn" %> </li>
-	  		  <% end %>
-	        </ul>
-	      </div><!--/.well -->
-	    </div><!--/span-->
- 
-	   
-
-	  </div>
-	</div><!--end container-fluid-->
+	<div class="tabbable">
+		<div class="row-fluid">
+			<div class="span2">
+		  		<div class="tabbable tabs-left">
+	  				<ul class="nav nav-tabs">
+	  					<li><a href="#pane1" data-toggle="tab">Company name 1</a></li>
+						<% (2..18).each do |i| %>
+						<li><a href="#pane<%=i%>" data-toggle="tab">Company name <%=i%></a></li>
+						<% end %>
+		  			</ul>
+		  		</div>
+			</div>
+			<div class="span8">
+			  	<div class="tab-content">
+			  		<div id="pane1" class="tab-pane active">
+			  			<h4>Company 1</h4>
+			   		 	<pre>Description ...</pre>
+			   		</div>
+			  		<% (2..18).each do |i| %>
+			  		<div id="pane<%=i%>" class="tab-pane">
+			   			<h4>Company <%=i%></h4>
+			   		 	<pre>Description ...</pre>
+			   		</div>
+					<%end%>  
+			    </div> 
+			</div><!-- /.tab-content -->
+		</div>
+	</div><!-- /.tabbable -->
+</div><!-- /.tabbable -->
