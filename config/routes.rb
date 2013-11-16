@@ -8,6 +8,8 @@ Codeforgood::Application.routes.draw do
   root 'main#index'
   get '(test)/'=>'main#test'
   get '(index)/' => 'main#index'
+  resources :updates
+  get 'companies/formupdate'=>'companies#formupdate'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

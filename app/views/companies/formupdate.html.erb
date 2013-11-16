@@ -1,0 +1,6 @@
+<%= form_tag(:controller => "companies", :action => "create") do %>
+  <%= label_tag(:update_SEI, "SEI Updates") %><br />  
+  <%= text_area_tag(:update_SEI, :size => "44x6") %><br />
+
+  <%= submit_tag("Update") %>  
+<% end %>

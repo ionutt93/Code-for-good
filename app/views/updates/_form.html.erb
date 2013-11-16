@@ -1,0 +1,24 @@
+<%= form_for @update do |f| %>
+	<%= f.label :update_SEI, "Updates" %>
+	<%= f.text_area :update_SEI, size: "12x3" %>
+	
+	<%= f.label :challenge, "Challenges" %>
+	<%= f.text_area :challenge, size: "12x3" %>
+	
+	<%= f.label :support_req, "Support required" %>
+	<%= f.text_area :support_req, size: "12x3" %>
+	
+	<%= f.label :impact, "People impacted" %>
+	<%= f.text_field :impact %>
+	
+	<%= f.label :employed, "Number of employees" %>
+	<%= f.text_field :employed %>
+
+	<%= f.label :volunteers, "Number of volunteers" %>
+	<%= f.text_field :volunteers %>
+
+	<%= f.label :raised_funds, "Raised funds" %>
+	<%= f.text_field :raised_funds %>
+
+	<%= f.submit "Submit", class: "btn-large btn-primary" %>
+<% end %>
