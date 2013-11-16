@@ -6,6 +6,9 @@ Codeforgood::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'main#index'
   get '(test)/'=>'main#test'
+  resources :companies
+  resources :updates
+  get 'companies/formupdate'=>'companies#formupdate'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
