@@ -7,6 +7,17 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+							<% if company_signed_in? %>
+								<%= current_company.email %>
+								<%# link_to "My Account", companies_path(current_company.id) %></li>
+								<%= link_to "Sign out", destroy_company_session_path, :method => :delete %></li>
+								
+							<% else %>
+								<ul>
+									<li><%= link_to "Login", new_company_session_path %></li> or 
+									<li><%= link_to "Sign up", new_company_registration_path %></li>
+								</ul>
+							<% end %>
 
 <%= yield %>
 
