@@ -3,10 +3,14 @@ class UpdatesController < ApplicationController
 		@company = Company.find(params[:company_id])
 		@update = Update.new(params[:update].permit(:update_SEI, :challenge, :support_req,
 													:impact, :employed, :volunteers, :raised_funds))
+		@message = "Hello, #{@company.name}\n has uploaded new information."
+		@subject = "Updates from #{@company.name}"
+		@email = Company.where(admin: true).email.take
+
 		@update.company_id = @company.id
 		if @update.save
 			redirect_to :back #update_path(@update)
-			CompanyMailer.updates_email(@company).deliver
+			CompanyMailer.contact(@email,@subject,@message).deliver
 		else
 			render "new"
 		end
