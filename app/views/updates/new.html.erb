@@ -1,27 +1,47 @@
-<%= form_for [@company, @update] do |f| %>
-	<%= f.label :update_SEI, "Updates" %>
-	<%= f.text_area :update_SEI, size: "12x3" %>
-	
-	<%= f.label :challenge, "Challenges" %>
-	<%= f.text_area :challenge, size: "12x3" %>
-	
-	<%= f.label :support_req, "Support required" %>
-	<%= f.text_area :support_req, size: "12x3" %>
-	
-	<%= f.label :impact, "People impacted" %>
-	<%= f.text_field :impact %>
-	
-	<%= f.label :employed, "Number of employees" %>
-	<%= f.text_field :employed %>
+<style type="text/css">
+      .text-center {
+        padding-bottom: 10%;
+      }
 
-	<%= f.label :volunteers, "Number of volunteers" %>
-	<%= f.text_field :volunteers %>
+      .sgnBtn {
+        margin-top: 35px;
+      }
 
-	<%= f.label :raised_funds, "Raised funds" %>
-	<%= f.text_field :raised_funds %>
+      .other {
+      	margin-bottom: 15px;
+      }
 
-	<%= f.submit "Submit", class: "btn-large btn-primary" %>
-<% end %>
+      .text {
+      	font-size: 20px;
+      	color: #669900;
+      }
+</style>
 
+<div class="container">
+	<%= form_for [@company, @update] do |f| %>
+		<div class="other"><%= f.label :update_SEI, "Updates", class: "text" %>
+		<%= f.text_area :update_SEI, rows: "5", class: "input-xxlarge" %></div>
+		
+		<div class="other"><%= f.label :challenge, "Challenges", class: "text" %>
+		<%= f.text_area :challenge, rows: "5", class: "input-xxlarge" %></div>
+		
+		<div class="other"><%= f.label :support_req, "Support required", class: "text" %>
+		<%= f.text_area :support_req, rows: "5", class: "input-xxlarge" %></div>
+		
+		<div class="other"><%= f.label :impact, "People impacted", class: "text" %>
+		<%= f.text_field :impact %></div>
+		
+		<div class="other"><%= f.label :employed, "Number of employees", class: "text" %>
+		<%= f.text_field :employed %></div>
+
+		<div class="other"><%= f.label :volunteers, "Number of volunteers", class: "text" %>
+		<%= f.text_field :volunteers %></div>
+
+		<div class="other"><%= f.label :raised_funds, "Raised funds", class: "text" %>
+		<%= f.text_field :raised_funds %></div>
+
+		<%= f.submit "Submit", class: "btn-large btn-success sgnBtn" %>
+	<% end %>
+</div>
 
 <%# render "form" %>
