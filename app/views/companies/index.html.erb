@@ -18,7 +18,7 @@
 				  		<div id="pane<%=company.id%>" class="tab-pane active">
 				  			<h4><%=company.name%></h4>
 				   		 	<pre>Description <%=company.id%> ...</pre>
-				   		 	<%= link_to company.name + "'s updates", company_path(company.id), class: "btn" %>
+				   		 	<%= link_to "Add report for "+company.name, company_path(company.id), class: "btn" %>
 				   		</div>
 					<%else%>
 				  		<div id="pane<%=company.id%>" class="tab-pane">
