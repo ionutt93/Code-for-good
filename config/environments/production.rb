@@ -71,7 +71,7 @@ Codeforgood::Application.configure do
   # Send deprecation notices to registered listeners.
   config.active_support.deprecation = :notify
 
-  config.action_mailer.default_url_options = { :host => "localhost:3000" }
+  config.action_mailer.default_url_options = { :host => "http://glacial-forest-6289.herokuapp.com/" }
   config.action_mailer.default_options = {from: ''}
   config.action_mailer.raise_delivery_errors = true
   ActionMailer::Base.delivery_method = :smtp
