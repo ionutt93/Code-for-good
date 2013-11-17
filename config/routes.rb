@@ -1,7 +1,9 @@
 Codeforgood::Application.routes.draw do
   devise_for :companies
   resources :companies do 
-    resources :updates
+    resources :updates do
+      member {post :change_privacy}
+    end
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

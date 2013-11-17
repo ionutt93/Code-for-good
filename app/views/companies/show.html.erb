@@ -1,39 +1,42 @@
 <%= @company.name %>
 
 <% @company.updates.each do |u| %>
-	<% if !u.update_SEI.blank? %>
-		<h3>Updates</h3>
-		<p><%= u.update_SEI %></p>
-	<% end %>
+	<!--admin link to change update's privacy -->
+	
+		<% if !u.update_SEI.blank? %>
+			<h3>Updates</h3>
+			<p><%= u.update_SEI %></p>
+		<% end %>
 
-	<% if !u.challenge.blank? %>
-		<h3>Challenges</h3>
-		<p><%= u.challenge %></p>
-	<% end %>
+		<% if !u.challenge.blank? %>
+			<h3>Challenges</h3>
+			<p><%= u.challenge %></p>
+		<% end %>
 
-	<% if !u.support_req.blank? %>
-		<h3>Support required</h3>
-		<p><%= u.support_req %></p>
-	<% end %>
+		<% if !u.support_req.blank? %>
+			<h3>Support required</h3>
+			<p><%= u.support_req %></p>
+		<% end %>
 
-	<% if !u.impact.blank? %>
-		<h3>People impacted</h3>
-		<p><%= u.impact %></p>
-	<% end %>
+		<% if !u.impact.blank? %>
+			<h3>People impacted</h3>
+			<p><%= u.impact %></p>
+		<% end %>
 
-	<% if !u.employed.blank? %>
-		<h3>Number of employees</h3>
-		<p><%= u.employed %></p>
-	<% end %>
+		<% if !u.employed.blank? %>
+			<h3>Number of employees</h3>
+			<p><%= u.employed %></p>
+		<% end %>
 
-	<% if !u.volunteers.blank? %>
-		<h3>Number of volunteers</h3>
-		<p><%= u.volunteers %></p>
-	<% end %>
+		<% if !u.volunteers.blank? %>
+			<h3>Number of volunteers</h3>
+			<p><%= u.volunteers %></p>
+		<% end %>
 
-	<% if !u.raised_funds.blank? %>
-		<h3>Raised funds</h3>
-		<p><%= u.raised_funds %></p>
+		<% if !u.raised_funds.blank? %>
+			<h3>Raised funds</h3>
+			<p><%= u.raised_funds %></p>
+		<% end %>
 	<% end %>
 <% end %>
 
