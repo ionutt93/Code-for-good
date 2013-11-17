@@ -63,6 +63,20 @@
       .navbar-fixed-bottom {
         margin-left: 45%;
       }
+      .mailA {
+        box-shadow: 7px 7px 4px #D8D8D8;
+        border: 5px solid #e5e5e5;
+        -webkit-border-radius: 5px;
+           -moz-border-radius: 5px;
+                border-radius: 5px;
+        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+           -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+                box-shadow: 0 1px 2px rgba(0,0,0,.05);
+        margin-right: 15px;
+        font-size: 19px;
+        padding: 5px 5px 5px 5px;
+        color: #669900;
+      }
     </style>
 
 </head>
@@ -72,7 +86,7 @@
 	<div class="header text-left">
         <ul class="nav nav-pills pull-right">
         <% if company_signed_in? %>
-                <%= current_company.email %>
+                <div  class="mailA"><%= current_company.email %> </div>
                 <%# link_to "My Account", companies_path(current_company.id) %>
                 <%= link_to "Sign out", destroy_company_session_path, :method => :delete, class: "btn btn-large btn-error" %>
                 
