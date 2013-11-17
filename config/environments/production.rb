@@ -31,7 +31,7 @@ Codeforgood::Application.configure do
 
   # Generate digests for assets URLs.
   config.assets.digest = true
-
+  config.action_mailer.default_url_options = { :host => "http://glacial-forest-6289.herokuapp.com/" }
   # Version of your assets, change this if you want to expire all your assets.
   config.assets.version = '1.0'
 
