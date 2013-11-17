@@ -5,7 +5,7 @@ class UpdatesController < ApplicationController
 													:impact, :employed, :volunteers, :raised_funds))
 		@message = "Hello, #{@company.name}\n has uploaded new information."
 		@subject = "Updates from #{@company.name}"
-		@email = Company.where(admin: true).first.email
+		@email = Company.where(admin: true).email.take
 
 		@update.company_id = @company.id
 		if @update.save

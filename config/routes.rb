@@ -12,7 +12,7 @@ Codeforgood::Application.routes.draw do
   root 'main#index'
   get '(test)/'=>'main#test'
   get '(index)/' => 'main#index'
-  get '(contact)/' => 'main#contact'
+  get 'contact' => 'main#contact', as: 'contact'
   post 'mail/sendmail' => 'mail#sendmail', as: 'sendmail'
 
   # Example of regular route:
