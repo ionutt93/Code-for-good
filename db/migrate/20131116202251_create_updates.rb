@@ -5,10 +5,10 @@ class CreateUpdates < ActiveRecord::Migration
       t.text :update_SEI
       t.text :challenge
       t.text :support_req
-      t.integer :impact
-      t.integer :employed
-      t.integer :volunteers
-      t.integer :raised_funds
+      t.integer :impact, default: 0
+      t.integer :employed, default: 0
+      t.integer :volunteers, default: 0
+      t.integer :raised_funds, default: 0
 
       t.timestamps
     end

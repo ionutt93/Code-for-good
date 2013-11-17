@@ -38,10 +38,10 @@ ActiveRecord::Schema.define(version: 20131117063812) do
     t.text     "update_SEI"
     t.text     "challenge"
     t.text     "support_req"
-    t.integer  "impact"
-    t.integer  "employed"
-    t.integer  "volunteers"
-    t.integer  "raised_funds"
+    t.integer  "impact",       default: 0
+    t.integer  "employed",     default: 0
+    t.integer  "volunteers",   default: 0
+    t.integer  "raised_funds", default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "privacy",      default: true
