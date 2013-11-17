@@ -110,8 +110,9 @@
  <script type="text/javascript">
      $(function showAdvice() {
         var rand=Math.floor((Math.random(1999)*10)+1);
-       if(rand%2==0)$("#textToBeChanged").text("Do you need legal advice? We can help!");
-       else $("#textToBeChanged").text("Do you need financial advice? You can count on us!");
+       if(rand%3 == 0) $("#textToBeChanged").text("Do you need legal advice? We can help!");
+       if(rand%3 == 1) $("#textToBeChanged").text("Do you need financial advice? You can count on us!");
+       if(rand%3 == 2) $("#textToBeChanged").text("Do you need support with Human Resources issues? We are here for you!");
      });
      </script>
 
