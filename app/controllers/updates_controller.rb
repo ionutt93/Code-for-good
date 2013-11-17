@@ -9,9 +9,8 @@ class UpdatesController < ApplicationController
 
 		@update.company_id = @company.id
 		if @update.save
-			redirect_to @company #update_path(@update)
+			redirect_to @company
 			CompanyMailer.contact(@email,@subject,@message).deliver
-			redirect_to new #update_path(@update)
 		else
 			render "new"
 		end

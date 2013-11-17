@@ -11,22 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131117063812) do
+ActiveRecord::Schema.define(version: 20131117094657) do
 
   create_table "companies", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
+    t.boolean  "admin",                  default: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "admin"
     t.string   "name"
   end
 
@@ -38,10 +38,10 @@ ActiveRecord::Schema.define(version: 20131117063812) do
     t.text     "update_SEI"
     t.text     "challenge"
     t.text     "support_req"
-    t.integer  "impact"
-    t.integer  "employed"
-    t.integer  "volunteers"
-    t.integer  "raised_funds"
+    t.integer  "impact",       default: 0
+    t.integer  "employed",     default: 0
+    t.integer  "volunteers",   default: 0
+    t.integer  "raised_funds", default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "privacy",      default: true
