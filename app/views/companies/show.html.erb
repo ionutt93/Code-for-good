@@ -1,3 +1,5 @@
+
+
 <style>
 	.maindiv {
 		padding-left:10%;
@@ -102,28 +104,29 @@
             				:axis_labels => ['-1y|-9m|-6m|-3m|This month', '2005|2006|2007'])%>">
 		</div>
 		
-		<hr>
-		<h3 class="green">Updates</h3>
+		<h3 class="green">Report Update</h3>
 		<% @company.updates.reverse!.each do |u| %>
-			<% if !u.update_SEI.blank? %>
-				<pre class="cutright"><span class="green">Date:<%=u.created_at%><br></span><%=u.update_SEI %></pre>
-			<% end %>
+		<% if !current_company.admin? %>
+			<%= link_to "Change privacy on report " +  u.created_at.to_s , change_privacy_company_update_path(@company, u), method: "post", class: "btn" %>
 		<% end %>
-		<hr>
-		<h3 class="green">Challenges</h3>
-		<% @company.updates.reverse!.each do |u| %>
-			<% if !u.challenge.blank? %>
-				<pre class="cutright"><span class="green">Date:<%=u.created_at%><br></span><%= u.challenge %></pre>
+			<!-- -->
+		<% if !u.privacy || current_company.admin? %>
+			<hr>
+			<span class="green">Date:<%=u.created_at%><br></span>
+				<% if !u.update_SEI.blank? %>
+					<h5>Major SEI Updates</h5>
+					<pre class="cutright"><%=u.update_SEI %></pre>
+				<% end %>
+				<% if !u.challenge.blank? %>
+					<h5>Challenges faced</h5>
+					<pre class="cutright"><%= u.challenge %></pre>
+				<% end %>
+					<% if !u.support_req.blank? %>
+					<h5>Support required</h5>
+					<pre class="cutright"><%= u.support_req %></pre>
+				<% end %>
 			<% end %>
-		<% end %>
-		<hr>
-		<h3 class="green">Support required</h3>
-		<% @company.updates.reverse!.each do |u| %>
-			<% if !u.support_req.blank? %>
-				<pre class="cutright"><span class="green">Date:<%=u.created_at%><br></span><%= u.support_req %></pre>
-			<% end %>
-		<% end %>
-		<hr>
+		<% end %> 
 		
 		
 		
@@ -136,3 +139,5 @@
 <br>
 <br>
 </div>
+
+
