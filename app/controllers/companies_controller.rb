@@ -8,9 +8,10 @@ class CompaniesController < ApplicationController
 		@company = Company.find(params[:id])
 		@updates = @company.updates.all
 	end
-	# def new
 
-	# end
+	def index
+		@companies = Company.where(admin:false)
+	end
 
 	# def update
 

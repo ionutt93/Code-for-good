@@ -1,0 +1,35 @@
+<div class="container-fluid">
+	<div class="tabbable">
+		<div class="row-fluid">
+			<div class="span2">
+		  		<div class="tabbable tabs-left">
+	  				<ul class="nav nav-tabs">
+	  					
+						<% @companies.each do |company| %>
+							<li><a href="#pane<%=company.id%>" data-toggle="tab"><%=company.name%></a></li>
+						<% end %>
+		  			</ul>
+		  		</div>
+			</div>
+			<div class="span8">
+			  	<div class="tab-content">
+			  	<% @companies.each do |company| %>
+			  		<%if company.id==1%>
+				  		<div id="pane<%=company.id%>" class="tab-pane active">
+				  			<h4><%=company.name%></h4>
+				   		 	<pre>Description <%=company.id%> ...</pre>
+				   		 	<%= link_to "Add report for "+company.name, company_path(company.id), class: "btn" %>
+				   		</div>
+					<%else%>
+				  		<div id="pane<%=company.id%>" class="tab-pane">
+				   			<h4><%=company.name%></h4>
+				   		 	<pre>Description <%=company.id%> ...</pre>
+				   		 	<%= link_to "Add report for "+company.name, company_path(company.id), class: "btn" %>
+				   		</div>
+					<%end%> 
+				<%end%> 
+			    </div> 
+			</div><!-- /.tab-content -->
+		</div>
+	</div><!-- /.tabbable -->
+</div><!-- /.tabbable -->
