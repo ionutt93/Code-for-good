@@ -1,40 +1,157 @@
-<%= @company.name %>
+<style>
+	.maindiv {
+		padding-left:10%;
+	}
 
-<% @company.updates.each do |u| %>
-	<% if !u.update_SEI.blank? %>
-		<h3>Updates</h3>
-		<p><%= u.update_SEI %></p>
-	<% end %>
+	.noupdates{
+		padding-bottom:1%;
+	}
 
-	<% if !u.challenge.blank? %>
-		<h3>Challenges</h3>
-		<p><%= u.challenge %></p>
-	<% end %>
+	.spacerighttop{
+		padding-right: 5%;
+		padding-top: 5%;
+	}
 
-	<% if !u.support_req.blank? %>
-		<h3>Support required</h3>
-		<p><%= u.support_req %></p>
-	<% end %>
+	.cutright{
+		margin-right:10%;
+	}
 
-	<% if !u.impact.blank? %>
-		<h3>People impacted</h3>
-		<p><%= u.impact %></p>
-	<% end %>
+	.green{
+		color: #9ACD32;
+	}
 
-	<% if !u.employed.blank? %>
-		<h3>Number of employees</h3>
-		<p><%= u.employed %></p>
-	<% end %>
+</style>
 
-	<% if !u.volunteers.blank? %>
-		<h3>Number of volunteers</h3>
-		<p><%= u.volunteers %></p>
-	<% end %>
+<div class="maindiv"><%#= @company.name %>
 
-	<% if !u.raised_funds.blank? %>
-		<h3>Raised funds</h3>
-		<p><%= u.raised_funds %></p>
-	<% end %>
-<% end %>
+	<%if @company.updates.blank?%>
+		<h4 class="noupdates">No updates at this time</h4>
+	<%else%>
+		<div class="row-fluid">
+			<%= link_to "Add new update", new_company_update_path(@company) ,class: "btn btn-large btn-success"%>
+			<%= link_to "Help!", new_company_update_path(@company) ,class: "btn btn-large btn-danger"%>
+		</div>		
 
-<%= link_to "Add new update", new_company_update_path(@company) %>
+		<%
+		require 'gchart'
+		impacted = []
+		employees = []
+		volunteers = []
+		funds = []
+		grid= []
+		%>
+	    
+		<h3 style="display: none">People impacted</h3>
+		<% @company.updates.reverse![0..11].each_with_index do |u, index| %>
+			<% if !u.impact.blank? %>
+				<p style="display: none"><%=impacted[index]=u.impact %></p>
+			<% end %>
+
+			<h3 style="display: none">Number of employees</h3>
+			<% if !u.employed.blank? %>
+				<p style="display: none"><%=employees[index]=u.employed %></p>
+			<% end %>
+
+			<h3 style="display: none">Number of volunteers</h3>
+			<% if !u.volunteers.blank? %>
+				<p style="display: none"><%=volunteers[index]= u.volunteers %></p>
+			<% end %>
+
+			<h3 style="display: none">Raised funds</h3>
+			<% if !u.raised_funds.blank? %>
+				<p style="display: none"><%=funds[index]= u.raised_funds %></p>
+			<% end %>
+		<% end %>
+		<p style="display: none">
+			<%=grid[0]=impacted.max%>
+			<%=grid[1]=employees.max%>
+			<%=grid[2]=volunteers.max%>
+			<%=grid[3]=funds.max%>
+		</p>	
+
+		<div class="row-fluid">
+			<img class="spacerighttop" src="<%=
+		    	Gchart.line(:size => '500x300', 
+		    				:data => [impacted], 
+		    				:line_colors => 'EB3724',
+		    				:title => "People impacted",
+		    				:axis_with_labels => 'x,r',
+            				:axis_labels => ['-1y|-9m|-6m|-3m|This month', '0|300'])%>">
+			<img class="spacerighttop" src="<%=
+		    	Gchart.line(:size => '500x300', 
+		    				:data => [employees], 
+		    				:line_colors => 'EB3724',
+		    				:title => "Number of employees",
+		    				:axis_with_labels => 'x,r',
+            				:axis_labels => ['-1y|-9m|-6m|-3m|This month', '0|2006|2007'])%>">
+		</div>
+		<div class="row-fluid">
+			<img class="spacerighttop" src="<%=
+		    	Gchart.line(:size => '500x300', 
+		    				:data => [volunteers], 
+		    				:line_colors => 'EB3724',
+		    				:title => "Number of volunteers",
+		    				:axis_with_labels => 'x,r',
+            				:axis_labels => ['-1y|-9m|-6m|-3m|This month', '2005|2006|2007'])%>">
+		    <img class="spacerighttop" src="<%=
+		    	Gchart.line(:size => '500x300', 
+		    				:data => [funds], 
+		    				:line_colors => 'EB3724',
+		    				:title => "Raised funds",
+		    				:axis_with_labels => 'x,r',
+            				:axis_labels => ['-1y|-9m|-6m|-3m|This month', '2005|2006|2007'])%>">
+		</div>
+		
+		<h3 class="green">Report Update</h3>
+		<% @company.updates.reverse!.each do |u| %>
+		<% if !current_company.admin? %>
+			<%= link_to "Change privacy on report " +  u.created_at.to_s , change_privacy_company_update_path(@company, u), method: "post", class: "btn" %>
+		<% end %>
+			<!-- -->
+		<% if !u.privacy || current_company.admin? %>
+			<hr>
+			<span class="green">Date:<%=u.created_at%><br></span>
+				<% if !u.update_SEI.blank? %>
+					<h5>Major SEI Updates</h5>
+					<pre class="cutright"><%=u.update_SEI %></pre>
+				<% end %>
+				<% if !u.challenge.blank? %>
+					<h5>Challenges faced</h5>
+					<pre class="cutright"><%= u.challenge %></pre>
+				<% end %>
+					<% if !u.support_req.blank? %>
+					<h5>Support required</h5>
+					<pre class="cutright"><%= u.support_req %></pre>
+				<% end %>
+				<% if !u.impact.blank? %>
+					<h5>People impacted</h5>
+					<pre class="cutright"><%=u.impact%></pre>
+				<% end %>
+				<% if !u.employed.blank? %>
+					<h5>Number of employees</h5>
+					<pre class="cutright"><%= u.employed %></pre>
+				<% end %>
+					<% if !u.volunteers.blank? %>
+					<h5>Number of volunteers</h5>
+					<pre class="cutright"><%= u.volunteers %></pre>
+				<% end %>
+				<% if !u.raised_funds.blank? %>
+					<h5>Raised funds</h5>
+					<pre class="cutright"><%= u.raised_funds %></pre>
+				<% end %>
+			<% end %>
+		<% end %> 
+		
+		
+		
+<%end%>
+
+<div class="row-fluid">
+<br><%= link_to "Add new update", new_company_update_path(@company) ,class: "btn btn-large btn-success"%>
+<%= link_to "Help!", new_company_update_path(@company) ,class: "btn btn-large btn-danger"%>
+</div>
+<br>
+<br>
+</div>
+
+

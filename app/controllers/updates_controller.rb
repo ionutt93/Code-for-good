@@ -9,8 +9,9 @@ class UpdatesController < ApplicationController
 
 		@update.company_id = @company.id
 		if @update.save
-			redirect_to :back #update_path(@update)
+			redirect_to @company #update_path(@update)
 			CompanyMailer.contact(@email,@subject,@message).deliver
+			redirect_to new #update_path(@update)
 		else
 			render "new"
 		end
@@ -50,5 +51,13 @@ class UpdatesController < ApplicationController
 		@update = Update.find(params[:id])
 		@update.destroy
 		redirect_to updates_path
+	end
+
+	def change_privacy
+		@update = Update.find(params[:id])
+		@update.privacy = !@update.privacy
+		if @update.save
+			redirect_to :back
+		end
 	end
 end
