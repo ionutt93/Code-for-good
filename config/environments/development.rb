@@ -18,7 +18,7 @@ Codeforgood::Application.configure do
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
-  config.action_mailer.default_url_options = { :host => "http://glacial-forest-6289.herokuapp.com/" }
+  
   # Raise an error on page load if there are pending migrations
   config.active_record.migration_error = :page_load
 
@@ -26,4 +26,19 @@ Codeforgood::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
+  config.action_mailer.default_url_options = { :host => "localhost:3000" }
+  config.action_mailer.default_options = {from: ''}
+  config.action_mailer.raise_delivery_errors = true
+  ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.perform_deliveries = true
+  ActionMailer::Base.smtp_settings = 
+  {
+  :enable_starttls_auto => true,
+  :address              => 'smtp.gmail.com',
+  :port                 => 587,
+  :domain               => 'gmail.com',
+  :user_name            => 'codeforgood3@gmail.com',
+  :password             => 'cainerau',
+  :authentication       => 'plain'  
+  }
 end

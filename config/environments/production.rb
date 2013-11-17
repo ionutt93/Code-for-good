@@ -31,7 +31,6 @@ Codeforgood::Application.configure do
 
   # Generate digests for assets URLs.
   config.assets.digest = true
-  config.action_mailer.default_url_options = { :host => "http://glacial-forest-6289.herokuapp.com/" }
   # Version of your assets, change this if you want to expire all your assets.
   config.assets.version = '1.0'
 
@@ -71,6 +70,22 @@ Codeforgood::Application.configure do
 
   # Send deprecation notices to registered listeners.
   config.active_support.deprecation = :notify
+
+  config.action_mailer.default_url_options = { :host => "localhost:3000" }
+  config.action_mailer.default_options = {from: ''}
+  config.action_mailer.raise_delivery_errors = true
+  ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.perform_deliveries = true
+  ActionMailer::Base.smtp_settings = 
+  {
+  :enable_starttls_auto => true,
+  :address              => 'smtp.gmail.com',
+  :port                 => 587,
+  :domain               => 'gmail.com',
+  :user_name            => 'codeforgood3@gmail.com',
+  :password             => 'cainerau',
+  :authentication       => 'plain'  
+  }
 
   # Disable automatic flushing of the log to improve performance.
   # config.autoflush_log = false
