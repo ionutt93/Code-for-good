@@ -1,4 +1,4 @@
-<%= form_for @update do |f| %>
+<%= form_for [@company, @update] do |f| %>
 	<%= f.label :update_SEI, "Updates" %>
 	<%= f.text_area :update_SEI, size: "12x3" %>
 	
