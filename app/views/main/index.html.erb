@@ -4,25 +4,30 @@
 			<div class="span2">
 		  		<div class="tabbable tabs-left">
 	  				<ul class="nav nav-tabs">
-	  					<li><a href="#pane1" data-toggle="tab">Company name 1</a></li>
-						<% (2..18).each do |i| %>
-						<li><a href="#pane<%=i%>" data-toggle="tab">Company name <%=i%></a></li>
+	  					
+						<% @companies.each do |company| %>
+							<li><a href="#pane<%=company.id%>" data-toggle="tab"><%=company.name%></a></li>
 						<% end %>
 		  			</ul>
 		  		</div>
 			</div>
 			<div class="span8">
 			  	<div class="tab-content">
-			  		<div id="pane1" class="tab-pane active">
-			  			<h4>Company 1</h4>
-			   		 	<pre>Description ...</pre>
-			   		</div>
-			  		<% (2..18).each do |i| %>
-			  		<div id="pane<%=i%>" class="tab-pane">
-			   			<h4>Company <%=i%></h4>
-			   		 	<pre>Description ...</pre>
-			   		</div>
-					<%end%>  
+			  	<% @companies.each do |company| %>
+			  		<%if company.id==1%>
+				  		<div id="pane<%=company.id%>" class="tab-pane active">
+				  			<h4><%=company.name%></h4>
+				   		 	<pre>Description <%=company.id%> ...</pre>
+				   		 	<%= link_to "Add report for "+company.name, company_path(company.id), class: "btn" %>
+				   		</div>
+					<%else%>
+				  		<div id="pane<%=company.id%>" class="tab-pane">
+				   			<h4><%=company.name%></h4>
+				   		 	<pre>Description <%=company.id%> ...</pre>
+				   		 	<%= link_to "Add report for "+company.name, company_path(company.id), class: "btn" %>
+				   		</div>
+					<%end%> 
+				<%end%> 
 			    </div> 
 			</div><!-- /.tab-content -->
 		</div>
