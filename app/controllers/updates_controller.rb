@@ -1,10 +1,11 @@
 class UpdatesController < ApplicationController
 	def create
+		@company = Company.find(params[:company_id])
 		@update = Update.new(params[:update].permit(:update_SEI, :challenge, :support_req,
 													:impact, :employed, :volunteers, :raised_funds))
-
+		@update.company_id = @company.id
 		if @update.save
-			redirect_to update_path(@update)
+			redirect_to :back #update_path(@update)
 		else
 			render "new"
 		end
@@ -15,17 +16,19 @@ class UpdatesController < ApplicationController
 	end
 
 	def update
+		@company = Company.find(params[:company_id])
 		@update = Update.find(params[:id])
 
 		if @update.update(params[:update].permit(:update_SEI, :challenge, :support_req,
 													:impact, :employed, :volunteers, :raised_funds))
-			redirect_to update_path(@update)
+			redirect_to @company
 		else
 			render "edit"
 		end
 	end
 
 	def edit
+		@company = Company.find(params[:company_id])
 		@update = Update.find(params[:id])
 	end
 
@@ -34,6 +37,7 @@ class UpdatesController < ApplicationController
 	end
 
 	def new
+		@company = Company.find(params[:company_id])
 		@update = Update.new
 	end
 
