@@ -6,6 +6,7 @@ class UpdatesController < ApplicationController
 		@update.company_id = @company.id
 		if @update.save
 			redirect_to :back #update_path(@update)
+			CompanyMailer.updates_email(@company).deliver
 		else
 			render "new"
 		end
