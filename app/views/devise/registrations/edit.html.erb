@@ -9,6 +9,9 @@
   <div><%= f.label :company_name %><br />
   <%= f.text_field :name %></div>
 
+    <div><%#= f.label :company_name %><br />
+    <%= f.text_field :description, type: "text", class: "input-block-level", placeholder: "Description" %></div>
+
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>

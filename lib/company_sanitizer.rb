@@ -7,10 +7,10 @@ class Company::ParameterSanitizer < Devise::ParameterSanitizer
     end
 
     def account_update
-        default_params.permit(:name, :email, :password, :password_confirmation, :current_password)
+        default_params.permit(:name, :description, :email, :password, :password_confirmation, :current_password)
     end
 
     def sign_up
-    	default_params.permit(:name, :email, :password, :password_confirmation)
+    	default_params.permit(:name, :description, :email, :password, :password_confirmation)
     end
 end

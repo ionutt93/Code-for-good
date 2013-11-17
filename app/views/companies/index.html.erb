@@ -16,14 +16,14 @@
 			  	<% @companies.each do |company| %>
 			  		<%if company.id==1%>
 				  		<div id="pane<%=company.id%>" class="tab-pane active">
-				  			<h4><%=company.name%></h4>
-				   		 	<pre>Description <%=company.id%> ...</pre>
+				  			<h3><%=company.name%></h3>
+				   		 	<pre>Description: <%= company.description%> ...</pre>
 				   		 	<%= link_to "Add report for "+company.name, company_path(company.id), class: "btn" %>
 				   		</div>
 					<%else%>
 				  		<div id="pane<%=company.id%>" class="tab-pane">
-				   			<h4><%=company.name%></h4>
-				   		 	<pre>Description <%=company.id%> ...</pre>
+				   			<h3><%=company.name%></h3>
+				   		 	<pre>Description: <%= company.description%> ...</pre>
 				   		 	<%= link_to "Add report for "+company.name, company_path(company.id), class: "btn" %>
 				   		</div>
 					<%end%> 
