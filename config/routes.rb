@@ -1,6 +1,8 @@
 Codeforgood::Application.routes.draw do
   devise_for :companies
-  resources :companies
+  resources :companies do 
+    resources :updates
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -8,8 +10,7 @@ Codeforgood::Application.routes.draw do
   root 'main#index'
   get '(test)/'=>'main#test'
   get '(index)/' => 'main#index'
-  resources :updates
-  get 'companies/formupdate'=>'companies#formupdate'
+  
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
