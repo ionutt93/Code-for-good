@@ -30,7 +30,7 @@
     	width: 80%;
     	padding-left: 10%;
     	padding-right: 10%;
-    	padding-top: 2%;
+    	padding-top: 0%;
     }
     .header {
     	width: 80%;
@@ -57,11 +57,8 @@
         min-height: 100%;
         height: auto !important;
         height: 100%;
-        /* Negative indent footer by it's height */
+        /* Negative indent footer by its height */
         margin: 0 auto -60px;
-      }
-      .navbar-fixed-bottom {
-        margin-left: 45%;
       }
       .mailA {
         box-shadow: 7px 7px 4px #D8D8D8;
@@ -75,13 +72,64 @@
         margin-right: 15px;
         font-size: 19px;
         padding: 5px 5px 5px 5px;
-        color: #669900;
+        color: #9ACD32;
+      }
+      .fb-like {
+        float: left;
+        margin-left: 3%;
+      }
+      .allRights {
+        float: right;
+        margin-left: 3%;
+        margin-right: 3%;
+      }
+      .twitter-share-button {
+        float: left;
+        margin-right: 3%;
+      }
+      .navbar-fixed-bottom {
+        height: 4%;
+        margin-top: 10px;
+        margin-left: 10%;
+        width: 80%;
+        background-color: #FFFFFF;
+      }
+      .row-fluid {
+        margin-right: 10%;
+      }
+      .alert .alert-block {
+        width: 10%;
       }
     </style>
 
+    
+
 </head>
 <body>
-							
+
+ <script type="text/javascript">
+     $(function showAdvice() {
+        var rand=Math.floor((Math.random(1999)*10)+1);
+       if(rand%2==0)$("#textToBeChanged").text("Do you need legal advice? We can help!");
+       else $("#textToBeChanged").text("Do you need financial advice? You can count on us!");
+     });
+     </script>
+
+	<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<div class="container-fluid" onload="showAdvice()">
+  <div class="alert alert-success" onload="showAdvice()">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <h2 class="text-center" id="textToBeChanged" >Bla bla</h2>
+  </div>
+</div>
+
 
 	<div class="header text-left">
         <ul class="nav nav-pills pull-right">
@@ -96,21 +144,26 @@
         <% end %>
         <%= link_to "Home", root_path,  class: "btn btn-large btn-success", role: "button" %>
         </ul>
-        <img class="image" src="http://socialentrepreneurs.ie/wp-content/themes/sei/images/logo.png">
+       <a href="index.html"> <img class="image" src="http://socialentrepreneurs.ie/wp-content/themes/sei/images/logo.png"></a>
 
       <hr id="smallhr">
       </div>  
 
       <%= yield %>
-	
-	<div class="navbar-fixed-bottom">
-        <p>&copy; Social Entrepreneurs 2013</p>
-    </div>
 
+	<div class="navbar-fixed-bottom">
+    <div class="row-fluid">
+        <div class="fb-like" data-href="https://www.facebook.com/socialentrepreneursireland" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+        <a href="http://www.linkedin.com/company/social-entrepreneurs-ireland "><img src="http://thelinkedinman.yourbusinesschannel.com/files/2012/01/linkedinbutton.jpg" style="height:100%;"/></a>
+        
+        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://socialentrepreneurs.ie/" data-text="I'm lovin' it!" data-size="large">Tweet</a>
+        <p class="allRights">&copy; Social Entrepreneurs 2013</p>
+        
+    </div>
+    </div>
+  
+
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 
 </body>
 </html>
-
-
-          <!--a  href="#" role="button">Home</a>
-          <a class="btn btn-lg btn-success" href="#" role="button">Login</a>

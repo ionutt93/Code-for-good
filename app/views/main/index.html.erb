@@ -1,35 +1,137 @@
+<style type="text/css">
+/* CUSTOMIZE THE CAROUSEL
+    -------------------------------------------------- */
+
+    /* Carousel base class */
+    .carousel {
+      margin-bottom: 20px;
+    }
+
+    .carousel .container {
+      position: relative;
+      z-index: 9;
+    }
+
+    .carousel-control {
+      height: 80px;
+      margin-top: 0;
+      font-size: 120px;
+      text-shadow: 0 1px 1px rgba(0,0,0,.4);
+      background-color: transparent;
+      border: 0;
+      z-index: 10;
+    }
+
+    .carousel .item {
+      height: 500px;
+    }
+    .carousel img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      height: 500px;
+    }
+
+    .carousel-caption {
+      background-color: transparent;
+      position: static;
+      max-width: 550px;
+      padding: 0 20px;
+      margin-top: 400px;
+      padding-right: 150px;
+    }
+    .carousel-caption h1,
+    .carousel-caption .lead {
+      margin: 0;
+      line-height: 1.25;
+      color: #fff;
+      text-shadow: 0 1px 1px rgba(0,0,0,.4);
+    }
+    .carousel-caption .btn {
+      margin-top: -10px;
+    }
+    .container-fluid {
+    	padding: 0px 0px 0px 0px;
+    	margin-left: 10%;
+    	margin-right: 10%;
+    }
+    h2 {
+    	margin-top: 0px;
+    	color:#9ACD32;
+    }
+    .row {
+    	padding: 0px 0px 0px 0px;
+    	margin-left: 18%;
+    	margin-right: 10%;
+    	padding-bottom: 100px;
+    }
+
+</style>
+
+
 <div class="container-fluid">
-	<div class="tabbable">
-		<div class="row-fluid">
-			<div class="span2">
-		  		<div class="tabbable tabs-left">
-	  				<ul class="nav nav-tabs">
-	  					
-						<% @companies.each do |company| %>
-							<li><a href="#pane<%=company.id%>" data-toggle="tab"><%=company.name%></a></li>
-						<% end %>
-		  			</ul>
-		  		</div>
-			</div>
-			<div class="span8">
-			  	<div class="tab-content">
-			  	<% @companies.each do |company| %>
-			  		<%if company.id==1%>
-				  		<div id="pane<%=company.id%>" class="tab-pane active">
-				  			<h4><%=company.name%></h4>
-				   		 	<pre>Description <%=company.id%> ...</pre>
-				   		 	<%= link_to "Add report for "+company.name, company_path(company.id), class: "btn" %>
-				   		</div>
-					<%else%>
-				  		<div id="pane<%=company.id%>" class="tab-pane">
-				   			<h4><%=company.name%></h4>
-				   		 	<pre>Description <%=company.id%> ...</pre>
-				   		 	<%= link_to "Add report for "+company.name, company_path(company.id), class: "btn" %>
-				   		</div>
-					<%end%> 
-				<%end%> 
-			    </div> 
-			</div><!-- /.tab-content -->
-		</div>
-	</div><!-- /.tabbable -->
-</div><!-- /.tabbable -->
+	<h2 class="text-center">Changing Ireland by significantly increasing the impact of Ireland’s leading social entrepreneurs.</h2>
+	 <!-- Carousel
+    ================================================== -->
+    <div id="myCarousel" class="carousel slide">
+      <div class="carousel-inner">
+        <div class="item active">
+          <img src="http://socialentrepreneurs.ie/assets/2012/10/Fumbally-Exchange.jpg" alt="">
+          <div class="container">
+            <div class="carousel-caption">
+              <h2 style="color:#FAFAFA"> View the <a href="./companies/" class="btn btn-success">companies</a> that we support.</h2>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img src="http://socialentrepreneurs.ie/assets/2012/09/WebTalk.jpg" alt="">
+          <div class="container">
+            <div class="carousel-caption">
+              <h2 style="color:#FAFAFA"> View the <a href="./companies/" class="btn btn-success">companies</a> that we support.</h2>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img src="http://socialentrepreneurs.ie/assets/2012/09/EM-Banner1.jpg" alt="">
+          <div class="container">
+            <div class="carousel-caption">
+              <h2 style="color:#FAFAFA"> View the <a href="./companies/" class="btn btn-success">companies</a> that we support.</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+      <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+    </div><!-- /.carousel -->
+
+    <!-- Marketing messaging and featurettes
+    ================================================== -->
+
+
+
+    <div class="container-marketing">
+ 		
+      <!-- Three columns of text below the carousel -->
+      <div class="row">
+        <div class="span4">
+          <img class="img-circle" data-src="holder.js/140x140">
+          <h2>The Challenge</h2>
+          <p>In order to solve some of Ireland’s social and environmental problems, we need innovative thinking and new solutions. We need to challenge the status quo and try new things. We need to focus on effectiveness and on impact.</p> <p>We are lucky to have people all over Ireland who are developing new solutions to our societal problems. Without support, however, these ideas can struggle to make enough of an impact. We know we can’t afford to wait for these solutions to grow and scale, as the problems we face are immediate and urgent.</p>
+          <p><a class="btn" href="#">View details &raquo;</a></p>
+        </div><!-- /.span4 -->
+        <div class="span4">
+          <img class="img-circle" data-src="holder.js/140x140">
+          <h2>The Idea</h2>
+          <p>When a social entrepreneur comes up with a great new solution to social problems, we believe that they should get the funding and support that they need to scale and grow, so that they can impact as many people as possible, as quickly as possible.</p><p>At Social Entrepreneurs Ireland, we find the social entrepreneurs who have the most potential to have an impact, work with them intensively to develop their projects and ensure that their ideas are implemented as effectively and efficiently as possible. Our Awards Programmes provides up to €200,000 worth of support per social entrepreneur over the course of up to two years.</p>
+          <p><a class="btn" href="#">View details &raquo;</a></p>
+        </div><!-- /.span4 -->
+        <div class="span4">
+          <img class="img-circle" data-src="holder.js/140x140">
+          <h2>The Impact</h2>
+          <p>Over the last 7 years we have supported 161 social entrepreneurs, investing €4.9 million in their projects, and providing significant additional supports. These in turn have directly impacted over 200,000 people across Ireland and created over 800 employment opportunities in the process.</p><p>We’ve seen ideas grow from ideas in a bedroom to national movements, people’s passion turned into impact and Ireland fundamentally changed in many ways.</p>
+          <p><a class="btn" href="#">View details &raquo;</a></p>
+        </div><!-- /.span4 -->
+      </div><!-- /.row -->
+
+</div>
